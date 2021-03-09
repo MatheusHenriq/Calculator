@@ -1,6 +1,6 @@
-import 'package:calculator/constants.dart';
-import 'package:calculator/widgets/button.dart';
-import 'package:calculator/widgets/buttonrow.dart';
+import 'package:calculator/src/themes/constants.dart';
+import 'package:calculator/src/widgets/button.dart';
+import 'package:calculator/src//widgets/buttonrow.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

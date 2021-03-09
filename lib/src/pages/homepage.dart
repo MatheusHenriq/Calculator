@@ -1,6 +1,6 @@
-import 'package:calculator/models/purification.dart';
-import 'package:calculator/widgets/display.dart';
-import 'package:calculator/widgets/keyboard.dart';
+import 'package:calculator/src/models/purification.dart';
+import 'package:calculator/src/widgets/display.dart';
+import 'package:calculator/src/widgets/keyboard.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
