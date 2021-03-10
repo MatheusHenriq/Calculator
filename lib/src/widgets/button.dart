@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import 'package:calculator/src/themes/constants.dart';
 
 class ButtonKey extends StatelessWidget {
   final String label;
   final int flex;
   final Color color;
-  Widget iconChild = null;
-  final String Function(String) onTapKey;
+  final Widget iconChild;
+  final void Function(String) onTapKey;
   ButtonKey({this.label, this.onTapKey, this.flex, this.color, this.iconChild});
   @override
   Widget build(BuildContext context) {

@@ -1,13 +1,14 @@
 import 'dart:io';
-
 import 'package:math_expressions/math_expressions.dart';
 
 class Purification{
 
+  List<String> operations = ['+','-','/','%'];
   String _value = '';
   Parser _p = Parser();
   Expression _result;
   var _resultParse;
+  int _countOperations = 0;
   int _cleaner = 0;
   ContextModel _a;
 
@@ -23,21 +24,50 @@ class Purification{
     }
     else if (key == '='){
       _expressionResult();
-      
+      _value.endsWith(',0') ? _value = _value.substring(0,_value.indexOf(',')) : _value = _value;
     }
     
-    else{
-      print('numput');
+    else{    
       if(_cleaner==1){
-        if(key != '+' && key != '-' && key != '/' && key != '%' && key != 'x' ) 
-          _expressionCleaner(); 
-                                                                  
+        if(key != '+' && key != '-' && key != '/' && key != '%' && key != 'x' && key != ',' ) 
+          _expressionCleaner();
+          _addDigit(key);                                                                  
       }
-      _cleaner = 0;   
-      _addDigit(key);     
-    }
+      else if(
+        key == '+' ||
+        key == '-' ||
+        key == 'x' ||
+        key == '/' ||
+        key == ',' ||
+        key == '%' )
+        {
+          if( _value.substring(_value.length-1,_value.length) != '+' &&
+              _value.substring(_value.length-1,_value.length) != '-' &&
+              _value.substring(_value.length-1,_value.length) != 'x' &&
+              _value.substring(_value.length-1,_value.length) != '/' &&
+              _value.substring(_value.length-1,_value.length) != '%' &&
+              _value.substring(_value.length-1,_value.length) != ','  )
+          {
 
-    
+            if(key == ','){
+              for(String item in operations){
+                _countOperations = item.allMatches(_value).length;
+              }
+              if((_countOperations + 1) >= (','.allMatches(_value).length)){
+                _addDigit(key);
+              }
+            }  
+            else{
+              _addDigit(key);
+            } 
+          } 
+
+        }
+      else{
+        _addDigit(key);
+      } 
+      _cleaner = 0;  
+    }    
   }
 
   void _expressionCleaner(){  
@@ -49,8 +79,7 @@ class Purification{
   }
 
   void _addDigit(String key){
-      _value += key;
-    
+      _value += key;   
   }
 
   void _expressionResult(){
@@ -63,8 +92,6 @@ class Purification{
 
     _value = _value.replaceAll('.', ',');
     _cleaner = 1;
-    print(_cleaner);
-
   }
 
 

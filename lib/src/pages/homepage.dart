@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Display(text:purificationExpression.value),           
+          Display(text: purificationExpression.value),           
           KeyBoard(onPressedKey : setText),
         ],
       ),
